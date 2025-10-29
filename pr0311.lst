@@ -1,0 +1,169 @@
+LCC Assemble/Link/Interpret/Debug Ver 6.3  Wed Mar 19 16:00:32 2025
+Dowty, Sara
+
+Header
+o
+S     0072
+C
+
+Loc   Code           Source Code
+           ;pr0311.a
+           ;problem 11
+           ;Sara Dowty
+
+           	.start main
+3000  0045 prompt1:	.string "Enter first 4-digit hex number: "
+3001  006e
+3002  0074
+3003  0065
+3004  0072
+3005  0020
+3006  0066
+3007  0069
+3008  0072
+3009  0073
+300a  0074
+300b  0020
+300c  0034
+300d  002d
+300e  0064
+300f  0069
+3010  0067
+3011  0069
+3012  0074
+3013  0020
+3014  0068
+3015  0065
+3016  0078
+3017  0020
+3018  006e
+3019  0075
+301a  006d
+301b  0062
+301c  0065
+301d  0072
+301e  003a
+301f  0020
+3020  0000
+3021  0045 prompt2:	.string	"Enter second 4-digit hex number: "
+3022  006e
+3023  0074
+3024  0065
+3025  0072
+3026  0020
+3027  0073
+3028  0065
+3029  0063
+302a  006f
+302b  006e
+302c  0064
+302d  0020
+302e  0034
+302f  002d
+3030  0064
+3031  0069
+3032  0067
+3033  0069
+3034  0074
+3035  0020
+3036  0068
+3037  0065
+3038  0078
+3039  0020
+303a  006e
+303b  0075
+303c  006d
+303d  0062
+303e  0065
+303f  0072
+3040  003a
+3041  0020
+3042  0000
+3043  0020 space:		.string " "
+3044  0000
+3045  0042 print1:		.string "Before swap (r0, r1): "
+3046  0065
+3047  0066
+3048  006f
+3049  0072
+304a  0065
+304b  0020
+304c  0073
+304d  0077
+304e  0061
+304f  0070
+3050  0020
+3051  0028
+3052  0072
+3053  0030
+3054  002c
+3055  0020
+3056  0072
+3057  0031
+3058  0029
+3059  003a
+305a  0020
+305b  0000
+305c  0041 print2:		.string "After swap (r0, r1): "
+305d  0066
+305e  0074
+305f  0065
+3060  0072
+3061  0020
+3062  0073
+3063  0077
+3064  0061
+3065  0070
+3066  0020
+3067  0028
+3068  0072
+3069  0030
+306a  002c
+306b  0020
+306c  0072
+306d  0031
+306e  0029
+306f  003a
+3070  0020
+3071  0000
+
+           main:
+3072  e18d 	lea r0, prompt1		;load prompt1
+3073  f006 	sout r0			;print "Enter first 4-digit hex"
+3074  f008 	hin r0			;store hex number in r0
+3075  f001 	nl			;prints a newline
+3076  e3aa 	lea r1, prompt2		;load prompt2
+3077  f206 	sout r1			;print "Enter second 4-digit hex"
+3078  f208 	hin r1			;store hex number in r1
+
+3079  e5cb 	lea r2, print1		;print "Before swap.."
+307a  f406 	sout r2
+307b  f004 	hout r0			;prints r0 in hex before swap
+307c  e7c6 	lea r3, space		;load a space
+307d  f606 	sout r3			;print space
+307e  f204 	hout r1			;print r0 in hex before sway
+307f  f001 	nl			;newline
+
+3080  e5db 	lea r2, print2		;load print2
+3081  f406 	sout r2			;print print2
+3082  a04b 	xor r0, r1		;swap
+3083  a20b 	xor r1, r0		;swap
+3084  a04b 	xor r0, r1		;swap
+3085  f004 	hout r0			;print r0
+3086  f606 	sout r3			;print space
+3087  f204 	hout r1			;print r1
+3088  f001 	nl			;newline
+3089  f000 	halt			;halt
+====================================================== Output
+Enter first 4-digit hex number: abcd
+
+Enter second 4-digit hex number: 1234
+Before swap (r0, r1): abcd 1234
+After swap (r0, r1): 1234 abcd
+
+========================================== Program statistics
+Input file name       =      pr0311.a
+Instructions executed =   18 (hex)    24 (dec)
+Program size          =   8a (hex)   138 (dec)
+Max stack size        =    0 (hex)     0 (dec)
+Load point            = 3000 (hex) 12288 (dec)

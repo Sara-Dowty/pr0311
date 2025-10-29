@@ -1,0 +1,38 @@
+;pr0311.a
+;problem 11
+;Sara Dowty
+
+	.start main
+prompt1:	.string "Enter first 4-digit hex number: "
+prompt2:	.string	"Enter second 4-digit hex number: "
+space:		.string " "
+print1:		.string "Before swap (r0, r1): "
+print2:		.string "After swap (r0, r1): "
+
+main:
+	lea r0, prompt1		;load prompt1
+	sout r0			;print "Enter first 4-digit hex"
+	hin r0			;store hex number in r0
+	nl			;prints a newline
+	lea r1, prompt2		;load prompt2
+	sout r1			;print "Enter second 4-digit hex"
+	hin r1			;store hex number in r1
+
+	lea r2, print1		;print "Before swap.."
+	sout r2
+	hout r0			;prints r0 in hex before swap
+	lea r3, space		;load a space
+	sout r3			;print space
+	hout r1			;print r0 in hex before sway
+	nl			;newline
+
+	lea r2, print2		;load print2
+	sout r2			;print print2
+	xor r0, r1		;swap
+	xor r1, r0		;swap
+	xor r0, r1		;swap
+	hout r0			;print r0
+	sout r3			;print space
+	hout r1			;print r1
+	nl			;newline
+	halt			;halt
